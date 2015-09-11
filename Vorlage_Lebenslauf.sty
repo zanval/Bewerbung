@@ -56,11 +56,7 @@
 	\cfoot{}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
-	
-	% color blue
-	\definecolor{color0}{rgb}{0,0,0}% black
-	\definecolor{color1}{rgb}{0.22,0.45,0.70}% light blue
-	\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
 }
 
 % ============ Daten Abgleich ============
@@ -74,7 +70,8 @@
 % ============ Style ============
 
  \setlength{\hintscolumnwidth}{0.2\textwidth} %Linke Spalte groesser def.:0.175, fuer Familienstand 0.192. Mit geboren 0.18
-\AtEndPreamble{\@ifclassloaded{moderncv}{\recomputecvlengths}{}}
+% commented by Karol Kozioł bacause of error in ShareLaTeX
+%\AtEndPreamble{\@ifclassloaded{moderncv}{\recomputecvlengths}{}}
 
 % ------------ Kopf ------------
 \fancyheadoffset{5mm} 
@@ -218,8 +215,12 @@
 %\eintrag{Dauer}{Firma}{Ort}{Beschreibung ..... mehrzeilig}
 \newcommand* \eintragsAbstand {2\sectionsAbstandsMulti} %vorher 0.85em def. 0.25em
 
-% ohne datumskorrektur
 \newcommand \eintragK [2]{%
+	\cvitem[0.15em]{#1}{#2}
+}
+
+% ohne datumskorrektur
+\newcommand \eintragKb [2]{%
 	\cvitem[0.15em]{#1}{#2}
 }
 
@@ -250,13 +251,14 @@
 		\raggedleft\hintstyle{#1} &{\mdseries{#2}}%
 		\if\relax\detokenize{#3}\relax\else{\textit{ -- #3}}\fi
 		&\raggedleft{#4}%
+
 		\if\relax\detokenize{#5}\relax
 		\else\eintragExtraZeile{#5}\fi%
 	}\end{tabu}%
   \par\addvspace{\eintragsAbstand}}
 
 
-\newcommand* \eintragExtraZeile[1]{\\ & \vspace{-5mm}{\begin{minipage}[t]{\linewidth}#1\end{minipage}}}
+\newcommand* \eintragExtraZeile[1]{\\ & \vspace{-5mm} {\begin{minipage}[t]{\linewidth}\vspace{4px}#1\end{minipage}}}
 
 
 
@@ -326,5 +328,3 @@
   \par\addvspace{#1}}
 	
 \end{comment}
-
-
